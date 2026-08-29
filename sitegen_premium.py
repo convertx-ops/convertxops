@@ -164,17 +164,25 @@ for state,abbr in STATES:
                      body, schema))
     time.sleep(0.2)
 
-# ---- blog: generate 5 posts + index ----
+# ---- blog: write from the READER's mindset (what they think when they click) + founder facts ----
 BPOSTS = [
-    ("why-solar-installers-lose-leads-after-hours","Why solar installers lose leads after hours"),
-    ("cost-of-missed-calls-for-roofing-businesses","The real cost of missed calls for roofing businesses"),
-    ("how-ai-voice-agents-qualify-solar-leads","How AI voice agents qualify solar leads"),
-    ("24-7-call-answering-for-roofing-estimates","24/7 call answering for roofing estimates"),
-    ("lead-capture-vs-lead-generation-for-solar","Lead capture vs lead generation for solar"),
+    ("do-you-actually-lose-solar-leads-after-hours","Do you actually lose solar leads after hours? (the math you're avoiding)"),
+    ("will-an-ai-voice-agent-sound-robotic-to-my-customers","Will an AI voice agent sound robotic to my customers?"),
+    ("how-much-money-does-a-missed-roofing-call-cost-you","How much money does one missed roofing call actually cost you?"),
+    ("why-i-built-convertx-ops-rihan-pathan-founder-story","Why I built ConvertX Ops - founder Rihan Pathan's story"),
+    ("what-happens-on-the-first-call-with-our-ai-agent","What actually happens on the first call with our AI agent"),
 ]
+FACTS = ("Context: you are writing for ConvertX Ops, founded by Rihan Pathan. We build 24/7 AI voice agents "
+         "for US solar and roofing businesses. The agent answers every inbound call, qualifies the prospect by the "
+         "business's own criteria (roof type, service area, timeline, budget), and books the estimate on their calendar. "
+         "We offer a LIVE DEMO (not free calls). No big upfront build. Audience: solar/roofing business owners who are "
+         "skeptical and thinking 'do I even have this problem?'. Write from THEIR mindset - name the doubt they have "
+         "when they clicked. No fake client names, no invented case studies. Use illustrative math only (e.g. 'if you get "
+         "20 enquiries/week and miss 40%, that's 8 lost'). Plain CEO tone, no em-dashes, no hype words "
+         "(revolutionary/transform/seamless). End with: email convertx.ops@gmail.com for a live demo. 240 words.")
 posts_html=""
 for slugp, t in BPOSTS:
-    art=ollama(f"Write a 240-word useful blog post titled: {t}. Audience: US solar and roofing business owners. Plain tone, no em-dashes, no hype. Include one realistic number example. End: email convertx.ops@gmail.com for a live demo.",320) or f"{t}. ConvertX Ops helps solar and roofing businesses capture every lead with a 24/7 AI voice agent. Email convertx.ops@gmail.com for a live demo."
+    art=ollama(f"{FACTS}\n\nWrite the blog post titled: {t}.",340) or f"{t}. ConvertX Ops (founder Rihan Pathan) helps US solar and roofing businesses capture every inbound call with a 24/7 AI voice agent - answer, qualify, book. Email convertx.ops@gmail.com for a live demo."
     body_html="<p>"+"</p><p>".join(art.split("\n\n"))+"</p>" if art else "<p>Coming soon.</p>"
     with open(os.path.join(BLOG,f"{slugp}.html"),"w") as f:
         f.write(page(t, art[:150], f"<section class='wrap reveal'><article><h2>{html.escape(t)}</h2>{body_html}<p style='margin-top:18px'><a class='cta' href='mailto:convertx.ops@gmail.com?subject=DEMO'>Get a live demo</a></p><p><a href='/blog/'>Back to blog</a></p></article></section>"))
