@@ -96,18 +96,18 @@ FAQ_BLOCK = """
 <div class="faq">
 <details><summary>How fast does the AI voice agent answer?</summary><p>Under 1 second, 24/7, including evenings, weekends, and holidays.</p></details>
 <details><summary>Will it sound robotic?</summary><p>No. It uses natural conversation and qualifies by your exact criteria (roof type, area, timeline, budget).</p></details>
-<details><summary>What does it cost?</summary><p>Start with 100 free test calls. You only pay when it recovers jobs you would have lost. No big upfront build.</p></details>
+<details><summary>What does it cost?</summary><p>Start with a live demo. You only pay when it recovers jobs you would have lost. No big upfront build.</p></details>
 <details><summary>Do I need new software?</summary><p>No. It connects to your existing calendar and phone line. Your human team stays for high-value calls.</p></details>
-<details><summary>How do I start?</summary><p>Email convertx.ops@gmail.com with subject PILOT. We run 100 free test calls on your real enquiry flow.</p></details>
+<details><summary>How do I start?</summary><p>Email convertx.ops@gmail.com with subject PILOT. We run a live demo on your real enquiry flow.</p></details>
 </div></section>
 """
 
 PRICE_BLOCK = """
 <section class="wrap reveal"><h2>Pricing &mdash; built so you only win</h2>
 <div class="price">
-<p><span class="pill">100 free test calls</span> <span class="pill">no upfront build</span> <span class="pill">no long contract</span></p>
+<p><span class="pill">a live demo</span> <span class="pill">no upfront build</span> <span class="pill">no long contract</span></p>
 <p style="margin-top:12px">We prove it on your own leads first. You watch booked estimates land. Only then do you pay &mdash; and only when the agent recovers jobs you would have lost anyway.</p>
-<p style="margin-top:12px"><a class="cta" href="mailto:convertx.ops@gmail.com?subject=PILOT">Reply PILOT to start</a></p>
+<p style="margin-top:12px"><a class="cta" href="mailto:convertx.ops@gmail.com?subject=DEMO">Reply DEMO to start</a></p>
 </div></section>
 """
 
@@ -115,17 +115,17 @@ HOME=f"""
 <section class="hero"><div class="orbit"><div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><div class="dot" style="top:18%;left:30%"></div><div class="dot" style="bottom:22%;right:28%"></div></div>
 <h1>Most solar & roofing businesses don't have a lead problem. They have a capture problem.</h1>
 <p class="sub">When a homeowner calls at 8pm about a $7,000 solar quote and hits voicemail, they call your competitor. We fix that with a 24/7 AI voice agent that answers, qualifies, and books the estimate.</p>
-<a class="cta" href="mailto:convertx.ops@gmail.com?subject=PILOT">Start 100 free test calls</a><a class="cta ghost" href="/blog/">Read the blog</a>
+<a class="cta" href="mailto:convertx.ops@gmail.com?subject=DEMO">Start a live demo</a><a class="cta ghost" href="/blog/">Read the blog</a>
 </section>
 <section class="wrap reveal"><div class="grid">
 <div class="card"><h3>24/7 answering</h3><p>Every inbound call answered in under 1 second. No missed after-hours or weekend enquiries.</p></div>
 <div class="card"><h3>Auto qualification</h3><p>Filters by your criteria: roof type, service area, timeline, budget.</p></div>
 <div class="card"><h3>Calendar booking</h3><p>Books the site visit directly. You watch appointments land while you sleep.</p></div>
-<div class="card"><h3>100 free test calls</h3><p>See real booked estimates before spending a dollar. No big upfront build.</p></div>
+<div class="card"><h3>a live demo</h3><p>See the agent book a real estimate on a live demo. No big upfront build.</p></div>
 </div></section>
 <section class="wrap reveal"><h2>Why businesses trust ConvertX Ops</h2>
 <ul class="clean"><li>Same ads, same team, more booked jobs.</li><li>Transparent pricing. You only pay when it recovers jobs you would have lost.</li><li>No long contracts. No extra hire.</li><li>Founder-led, numbers-first. We show the leak before we ask for anything.</li></ul>
-<p style="margin-top:18px"><a class="cta" href="mailto:convertx.ops@gmail.com?subject=PILOT">Reply PILOT</a> &mdash; we run 100 free test calls on your real enquiry flow.</p></section>
+<p style="margin-top:18px"><a class="cta" href="mailto:convertx.ops@gmail.com?subject=DEMO">Reply PILOT</a> &mdash; we run a live demo on your real enquiry flow.</p></section>
 {PRICE_BLOCK}
 {FAQ_BLOCK}
 """
@@ -135,32 +135,32 @@ schema_home={"@context":"https://schema.org","@type":"ProfessionalService","name
  "founder":{"@type":"Person","name":"Rihan Pathan"},"areaServed":"US","url":BASE}
 with open(os.path.join(SITE,"index.html"),"w") as f:
     f.write(page("ConvertX Ops | 24/7 AI Voice Agents for Solar & Roofing Leads",
-                 "AI voice agents that answer solar and roofing calls 24/7, qualify prospects, book estimates. 100 free test calls.",
+                 "AI voice agents that answer solar and roofing calls 24/7, qualify prospects, book estimates. a live demo.",
                  HOME, schema_home))
 
 for state,abbr in STATES:
     fn=os.path.join(SITE,f"{slug(state)}.html")
-    intro=ollama(f"Write an 80-word SEO intro for a page about AI voice agents that capture solar and roofing leads for installers in {state}. Mention missed after-hours calls, booked estimates, no upfront cost. Useful, no em-dashes, no hype.",220) or f"Solar and roofing installers in {state} lose high-intent enquiries to slow or missed calls after hours. ConvertX Ops runs a 24/7 AI voice agent that answers, qualifies, and books estimates on your calendar. Start with 100 free test calls."
+    intro=ollama(f"Write an 80-word SEO intro for a page about AI voice agents that capture solar and roofing leads for installers in {state}. Mention missed after-hours calls, booked estimates, no upfront cost. Useful, no em-dashes, no hype.",220) or f"Solar and roofing installers in {state} lose high-intent enquiries to slow or missed calls after hours. ConvertX Ops runs a 24/7 AI voice agent that answers, qualifies, and books estimates on your calendar. Start with a live demo."
     body=f"""
 <section class="hero"><div class="orbit"><div class="ring r1"></div><div class="ring r2"></div></div>
 <h1>AI Voice Agent for Solar & Roofing Leads in {state}</h1>
 <p class="sub">{html.escape(intro)}</p>
-<a class="cta" href="mailto:convertx.ops@gmail.com?subject=PILOT">Get 100 free test calls in {state}</a></section>
+<a class="cta" href="mailto:convertx.ops@gmail.com?subject=DEMO">Get a live demo in {state}</a></section>
 <section class="wrap reveal"><div class="grid">
 <div class="card"><h3>Every call answered</h3><p>Inbound {state} calls answered in under 1 second, 24/7.</p></div>
 <div class="card"><h3>Qualify by your rules</h3><p>Roof type, service area, timeline, budget.</p></div>
 <div class="card"><h3>Books estimates</h3><p>Site visit lands on your calendar automatically.</p></div>
-<div class="card"><h3>No upfront cost</h3><p>100 free test calls first, then pay only on recovered jobs.</p></div></div></section>
+<div class="card"><h3>No upfront cost</h3><p>a live demo first, then pay only on recovered jobs.</p></div></div></section>
 <section class="wrap reveal"><h2>Why {state} installers choose ConvertX Ops</h2>
 <ul class="clean"><li>More volume should mean more jobs, not more leaks.</li><li>We close the capture gap so your ad spend and yard signs convert.</li><li>Transparent. No big build. Founder-led.</li></ul>
-<p style="margin-top:16px"><a class="cta" href="mailto:convertx.ops@gmail.com?subject=PILOT">Email us</a> to run 100 free test calls in {state}.</p></section>
+<p style="margin-top:16px"><a class="cta" href="mailto:convertx.ops@gmail.com?subject=DEMO">Email us</a> to run a live demo in {state}.</p></section>
 {FAQ_BLOCK}
 """
     schema={"@context":"https://schema.org","@type":"ProfessionalService","name":f"ConvertX Ops - {state}",
             "description":f"24/7 AI voice agent for solar and roofing leads in {state}.","areaServed":state,"email":"convertx.ops@gmail.com"}
     with open(fn,"w") as f:
         f.write(page(f"AI Voice Agent for Solar & Roofing Leads in {state} | ConvertX Ops",
-                     f"24/7 AI voice agent that captures solar and roofing leads in {state}. Qualify and book estimates. 100 free test calls.",
+                     f"24/7 AI voice agent that captures solar and roofing leads in {state}. Qualify and book estimates. a live demo.",
                      body, schema))
     time.sleep(0.2)
 
@@ -174,10 +174,10 @@ BPOSTS = [
 ]
 posts_html=""
 for slugp, t in BPOSTS:
-    art=ollama(f"Write a 240-word useful blog post titled: {t}. Audience: US solar and roofing business owners. Plain tone, no em-dashes, no hype. Include one realistic number example. End: email convertx.ops@gmail.com for 100 free test calls.",320) or f"{t}. ConvertX Ops helps solar and roofing businesses capture every lead with a 24/7 AI voice agent. Email convertx.ops@gmail.com for 100 free test calls."
+    art=ollama(f"Write a 240-word useful blog post titled: {t}. Audience: US solar and roofing business owners. Plain tone, no em-dashes, no hype. Include one realistic number example. End: email convertx.ops@gmail.com for a live demo.",320) or f"{t}. ConvertX Ops helps solar and roofing businesses capture every lead with a 24/7 AI voice agent. Email convertx.ops@gmail.com for a live demo."
     body_html="<p>"+"</p><p>".join(art.split("\n\n"))+"</p>" if art else "<p>Coming soon.</p>"
     with open(os.path.join(BLOG,f"{slugp}.html"),"w") as f:
-        f.write(page(t, art[:150], f"<section class='wrap reveal'><article><h2>{html.escape(t)}</h2>{body_html}<p style='margin-top:18px'><a class='cta' href='mailto:convertx.ops@gmail.com?subject=PILOT'>Get 100 free test calls</a></p><p><a href='/blog/'>Back to blog</a></p></article></section>"))
+        f.write(page(t, art[:150], f"<section class='wrap reveal'><article><h2>{html.escape(t)}</h2>{body_html}<p style='margin-top:18px'><a class='cta' href='mailto:convertx.ops@gmail.com?subject=DEMO'>Get a live demo</a></p><p><a href='/blog/'>Back to blog</a></p></article></section>"))
     posts_html+=f"<li><a href='/blog/{slugp}.html'>{html.escape(t)}</a></li>"
 
 bi=f"<section class='wrap reveal'><h2>ConvertX Ops Blog</h2><p>Field notes on capturing solar & roofing leads with AI voice agents.</p><ul class='clean'>{posts_html}</ul><p style='margin-top:16px'><a href='/'>Home</a></p></section>"

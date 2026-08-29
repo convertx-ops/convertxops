@@ -36,14 +36,14 @@ def make_post(topic):
     body = ollama(
         f"Write a 280-word useful blog post titled about: {topic}. Audience: US solar and roofing "
         f"business owners. No em-dashes. No hype words. Include one real-sounding number example. "
-        f"End with a plain CTA to email convertx.ops@gmail.com for 100 free test calls.", 600)
+        f"End with a plain CTA to email convertx.ops@gmail.com for a live demo.", 600)
     return body
 
 def linkedin_post():
     return ollama(
         "Write a 110-word LinkedIn text post for the founder of ConvertX Ops, a company that sells "
         "24/7 AI voice agents to solar and roofing businesses. Hook about missed after-hours calls. "
-        "One plain insight with a real number. CTA: reply PILOT. FORBIDDEN words: revolutionary, "
+        "One plain insight with a real number. CTA: reply DEMO. FORBIDDEN words: revolutionary, "
         "game-changing, transform, seamless, unparalleled, excited to introduce, leverage. Plain CEO tone. "
         "No em-dashes. No hashtags in body.", 280)
 
