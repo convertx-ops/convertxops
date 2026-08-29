@@ -15,7 +15,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.join(HERE, "site")
 BLOG = os.path.join(SITE, "blog")
 os.makedirs(BLOG, exist_ok=True)
-open(os.path.join(SITE, ".nojekyll"), "w").close()  # disable Jekyll
+open(os.path.join(SITE, ".nojekyll"), "w").write("disable jekyll\n")  # disable Jekyll (no folder dropping)
+# root 404 fallback -> redirect home (never show GitHub 404)
+with open(os.path.join(SITE, "404.html"), "w") as f:
+    f.write('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>ConvertX Ops</title>'
+             '<meta http-equiv="refresh" content="0;url=https://convertx-ops.github.io/convertxops/"></head>'
+             '<body><p>Redirecting to <a href="https://convertx-ops.github.io/convertxops/">ConvertX Ops</a>...</p></body></html>')
 
 STATES = [
     ("Alabama","AL"),("Alaska","AK"),("Arizona","AZ"),("Arkansas","AR"),("California","CA"),
